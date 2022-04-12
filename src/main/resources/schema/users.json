@@ -1,0 +1,16 @@
+
+  {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "integer",
+    "city": "string",
+    "name": "string",
+    "school_name": "string",
+    "grade": "string"
+
+  }
+
+
+
+
+
+
