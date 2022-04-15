@@ -3,6 +3,8 @@ package helpers;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -36,6 +38,7 @@ public class Helpers {
          *
          * @return получившийся запрос
          */
+        @Step("Формирования заголовка и тела запроса")
         public static RequestSpecification buildRequest() {
             RequestSpecification request = RestAssured
                     .given();
@@ -84,14 +87,12 @@ public class Helpers {
          * @param resource ресурс API, к которому выполняем запрос
          * @return ответ типа Response от сервера
          */
+        @Step("Выполнение GET запроса")
         public static Response executeGetRequest(RequestSpecification request, String resource) {
             return request
                     .when().log().all()
                     .get(resource)
                     .then().log().all().extract().response();
         }
-
-
-
 
 }
