@@ -4,12 +4,14 @@ import io.qameta.allure.*;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.junit.jupiter.api.DisplayName;
 import org.testng.annotations.Test;
 
 
 import static helpers.Helpers.*;
 
 @Epic("ЭПИК: Проверка моксервиса OTUS")
+@DisplayName("Проверка моксервиса OTUS")
 public class ResponseSchemaTests {
 
     public Response response;
