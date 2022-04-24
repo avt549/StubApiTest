@@ -1,18 +1,17 @@
 package test;
 
 import io.qameta.allure.*;
-import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.junit.jupiter.api.DisplayName;
 import org.testng.annotations.Test;
 
 
 import static helpers.Helpers.*;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
-@Epic("ЭПИК: Проверка моксервиса OTUS")
-@DisplayName("Проверка моксервиса OTUS")
-public class ResponseSchemaTests {
+@Test(testName = "Проверка мока OTUS",
+        description = "Проверка мока OTUS")
+public class ResponseSchemaTest {
 
     public Response response;
 
@@ -27,7 +26,7 @@ public class ResponseSchemaTests {
                         response.then()
                         .log().all()
                         .statusCode(200)
-                        .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schema/usersAll.json"));
+                        .body(matchesJsonSchemaInClasspath("schema/usersAll.json"));
     }
 
 
@@ -41,7 +40,7 @@ public class ResponseSchemaTests {
         response.then()
                 .log().all()
                 .statusCode(200)
-                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schema/users.json"));
+                .body(matchesJsonSchemaInClasspath("schema/users.json"));
     }
 
 
@@ -55,7 +54,7 @@ public class ResponseSchemaTests {
         response.then()
                 .log().all()
                 .statusCode(200)
-                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schema/users.json"));
+                .body(matchesJsonSchemaInClasspath("schema/users.json"));
     }
     @Step("Getting response")
     @Attachment
